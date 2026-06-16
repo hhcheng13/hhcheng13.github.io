@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Hung Hon Cheng (Paul)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="nav-brand">Hung Hon Cheng (Paul)</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <!-- <li><a href="index.html#contact">Contact</a></li> -->
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div style="padding: 48px 80px; max-width: 1100px; margin: 0 auto;">
+  <h1 class="section-heading" style="margin-bottom: 32px;">Projects</h1>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="project-tag">Teleoperation</span>
+      <div class="project-title">Bimanual Cable-Driven Teleoperation</div>
+      <div class="project-desc">8-DoF cable-driven parallel robot system for bimanual teleoperation, featuring variable shoulder distance for adaptable manipulation at different scales. Published in T-mech and npj Robotics 2025.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Agricultural Robotics</span>
+      <div class="project-title">CAFEs — Cable Agricultural Floating End-Effectors</div>
+      <div class="project-desc">Cable-traversing robotic system for agricultural applications. Features scalable mechanical design, large-workspace teleoperation control, and collaborative floating end-effectors. ICRA 2025.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Soft Robotics</span>
+      <div class="project-title">Soft Robot Arm Physical Twin Control</div>
+      <div class="project-desc">Teleoperation and dynamic control of soft robotic arms using a physical twin interface, enabling responsive real-time manipulation. IROS 2025.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Imitation Learning</span>
+      <div class="project-title">Online Imitation Learning via Teleoperation</div>
+      <div class="project-desc">Decaying relative correction framework for online imitation learning during robotic manipulation tasks, enabling efficient skill transfer through teleoperation. IROS 2025.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Cable-Driven Robots</span>
+      <div class="project-title">Reconfigurable CDPR Workspace Optimization</div>
+      <div class="project-desc">Cable attachment optimization for reconfigurable cable-driven parallel robots. Novel ray-based method for efficient wrench-closure and interference-free workspace analysis. T-RO 2023, MMT 2022.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Musculoskeletal Robots</span>
+      <div class="project-title">Lattice Structure Musculoskeletal Robots</div>
+      <div class="project-desc">Programmable geometric topology and anisotropy in lattice-structure musculoskeletal robots, enabling novel mechanical properties through structural design. Science Advances 2025.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © 2025 Hung Hon Cheng &nbsp;·&nbsp; EPFL Lausanne &nbsp;·&nbsp;
+  <a href="mailto:hung.cheng@epfl.ch">hung.cheng@epfl.ch</a>
+</footer>
+
+<script>
+    function toggleMenu() {
+    var nav = document.querySelector('.nav-links');
+    var btn = document.getElementById('hamburger');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.width = '100%';
+      nav.style.background = 'var(--bg)';
+      nav.style.padding = '8px 0 12px';
+      nav.style.borderTop = '1px solid var(--divider)';
+      btn.classList.add('active');
+    }
+  }
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-sun';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+</script>
+</body>
+</html>

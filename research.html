@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — Hung Hon Cheng (Paul)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+    .research-card {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .research-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .card-header {
+      padding: 28px 28px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .card-header-left { flex: 1; }
+    .card-tag {
+      display: inline-block;
+      background: var(--accent-dk);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 4px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .card-teaser {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .card-arrow {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 4px;
+      flex-shrink: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .research-card:hover .card-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+    .card-pubs {
+      padding: 12px 28px 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--divider);
+    }
+
+    .media-section {
+      margin-top: 16px;
+      padding-top: 40px;
+      border-top: 1px solid var(--divider);
+    }
+    .media-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      max-width: 720px;
+    }
+    .media-card-body { padding: 20px 24px; }
+    .media-outlet {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .media-title { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .media-desc { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .research-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="nav-brand">Hung Hon Cheng (Paul)</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <!-- <li><a href="index.html#contact">Contact</a></li> -->
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div style="padding: 48px 80px; max-width: 1100px; margin: 0 auto;">
+
+  <h1 class="section-heading" style="margin-bottom: 8px;">Research</h1>
+  <p style="color: var(--text-dim); font-size: 16px; margin-bottom: 48px; line-height: 1.7;">
+    My research is built on a core premise: <em>the body and the intelligence must adapt together.</em> A robot that can reconfigure its own physical structure gains new capabilities — but only if its intelligence understands what that new body can and cannot do. I co-design reconfigurable physical platforms with the models and learning frameworks needed to operate them, keeping a human in the loop as a structured part of the system.
+  </p>
+
+  <div class="research-grid">
+
+    <a class="research-card" href="research-cables.html">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Reconfigurable Robots</span>
+          <div class="card-title">Cable-Driven Parallel Robots</div>
+          <div class="card-teaser">Workspace optimisation and motion planning for robots that change their own geometry.</div>
+        </div>
+        <i class="fas fa-arrow-right card-arrow"></i>
+      </div>
+      <div class="card-pubs">T-RO 2023 · RA-L 2019 · MMT 2022 · CableCon 2025</div>
+    </a>
+
+    <a class="research-card" href="research-teleop.html">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Teleoperation & HRI</span>
+          <div class="card-title">Teleoperation & Human-Robot Interaction</div>
+          <div class="card-teaser">Intuitive human control of complex robotic systems across surgical and large-scale domains.</div>
+        </div>
+        <i class="fas fa-arrow-right card-arrow"></i>
+      </div>
+      <div class="card-pubs">npj Robotics 2025 · T-Mech 2025</div>
+    </a>
+
+    <a class="research-card" href="research-learning.html">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Robot Learning</span>
+          <div class="card-title">Learning on Physically Adaptive Systems</div>
+          <div class="card-teaser">For tasks whose behaviour is implicit or too high-dimensional to hand-code, learning-based methods can be one of the solutions.</div>
+        </div>
+        <i class="fas fa-arrow-right card-arrow"></i>
+      </div>
+      <div class="card-pubs">ICRA 2025 · IROS 2025 · T-ASE</div>
+    </a>
+
+    <a class="research-card" href="research-multibot.html">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Multi-Robot Systems</span>
+          <div class="card-title">Multi-Robot Collaboration</div>
+          <div class="card-teaser">Coordinating multiple arms over shared workspaces with human-in-the-loop supervision.</div>
+        </div>
+        <i class="fas fa-arrow-right card-arrow"></i>
+      </div>
+      <div class="card-pubs" style="font-style: italic; color: var(--text-muted);">Coming soon</div>
+    </a>
+
+    <div class="research-card" style="cursor: default; pointer-events: none; opacity: 0.65;">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Hyper-Redundant Robots</span>
+          <div class="card-title">Hyper-Redundant Robotic Arm <span style="font-size: 11px; font-weight: 600; background: var(--divider); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;">Coming Soon</span></div>
+          <div class="card-teaser">Research under review.</div>
+        </div>
+      </div>
+      <div class="card-pubs" style="font-style: italic;">Under review</div>
+    </div>
+
+    <a class="research-card" href="research-soft.html">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Soft Robotics</span>
+          <div class="card-title">Soft & Compliant Robotic Systems</div>
+          <div class="card-teaser">Harnessing programmable compliance and material geometry to build robots that adapt their physical behaviour.</div>
+        </div>
+        <i class="fas fa-arrow-right card-arrow"></i>
+      </div>
+      <div class="card-pubs">Science Advances 2025 · ICRA 2025</div>
+    </a>
+
+    <div class="research-card" style="cursor: pointer;" onclick="toggleSurgical(this)">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Surgical Robotics</span>
+          <div class="card-title">Open-Source Surgical & Endoscopic Robotics</div>
+          <div class="card-teaser">A future open-source platform for surgical and endoscopic robotics, in the spirit of the <a href="https://www.intuitive-foundation.org/dvrk/" target="_blank" rel="noopener noreferrer">da Vinci Research Kit (dVRK)</a>.</div>
+        </div>
+        <i class="fas fa-chevron-down card-arrow" style="transition: transform 0.3s;"></i>
+      </div>
+      <div class="surgical-expand" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
+        <img src="assets/video/Cornerstone-Robotics-Sentire-endoscopic-robot-1.jpg" alt="Cornerstone Robotics Sentire endoscopic robot" style="width:100%; display:block;" />
+      </div>
+      <div class="card-pubs">Cornerstone Robotics · Sentire Platform</div>
+    </div>
+
+  </div>
+
+  <!-- Media section -->
+
+  <!-- Media section -->
+
+  <!-- Media section -->
+  <div class="media-section">
+    <h2 class="section-title" style="margin-bottom: 24px;">Media Coverage</h2>
+
+    <div class="media-card">
+      <video width="100%" controls autoplay muted loop preload="metadata">
+        <source src="assets/video/compressed/Cnn Trimmed Compressed.mp4" type="video/mp4">
+      </video>
+      <div class="media-card-body">
+        <div class="media-outlet">CNN International &middot; Tech for Good &middot; Dec 2025</div>
+        <div class="media-title">CAFEs Agricultural Robot System</div>
+        <div class="media-desc">Featured in CNN International's Tech for Good segment, showcasing the CAFEs multi-arm system deployed in a real greenhouse for autonomous harvesting and human-in-the-loop learning. <a href="https://edition.cnn.com/2025/12/16/world/video/vertical-farming-future-tech-for-good-spc-digvid" target="_blank" rel="noopener noreferrer">Watch it on CNN</a>.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="media-section" style="margin-top: 56px;">
+    <h2 class="section-title" style="margin-bottom: 8px;">Open Source Robotic Hardware and Software</h2>
+    <p style="color: var(--text-dim); font-size: 15px; margin-bottom: 28px; line-height: 1.7;">
+      A few open-source hardware and software releases are in preparation, spanning robotic arms, teleoperation devices, simulation tools, and field robotics platforms.
+    </p>
+
+    <div class="research-grid">
+      <div class="research-card" style="cursor: default; opacity: 0.65;">
+        <div class="card-header">
+          <div class="card-header-left">
+            <span class="card-tag">Open Source Robotics</span>
+            <div class="card-title">Low-Cost 6-7 DoF CAFE Robotic Arm <span style="font-size: 11px; font-weight: 600; background: var(--divider); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;">Coming Soon</span></div>
+            <div class="card-teaser">An open-source, low-cost robotic arm from the CAFE system, with both CAD files and control code for research and education.</div>
+          </div>
+        </div>
+        <div class="card-pubs" style="font-style: italic;">CAD + code release in preparation</div>
+      </div>
+
+      <div class="research-card" style="cursor: default; opacity: 0.65;">
+        <div class="card-header">
+          <div class="card-header-left">
+            <span class="card-tag">Teleoperation Devices</span>
+            <div class="card-title">Low-Cost Parallel-Linkage Teleoperation Device <span style="font-size: 11px; font-weight: 600; background: var(--divider); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;">Coming Soon</span></div>
+            <div class="card-teaser">An open-source, low-cost master device inspired by the parallel-linkage teleoperation interface presented in the T-Mech paper.</div>
+          </div>
+        </div>
+        <div class="card-pubs" style="font-style: italic;">Hardware + firmware release in preparation</div>
+      </div>
+
+      <div class="research-card" style="cursor: default; opacity: 0.65;">
+        <div class="card-header">
+          <div class="card-header-left">
+            <span class="card-tag">Simulation & Control</span>
+            <div class="card-title">CASPR_Fast Based on CASPR <span style="font-size: 11px; font-weight: 600; background: var(--divider); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;">Coming Soon</span></div>
+            <div class="card-teaser">A cable robot modelling and control simulator extended from CASPR for our CARSPR workflows, experiments, and future open-source releases.</div>
+          </div>
+        </div>
+        <div class="card-pubs" style="font-style: italic;">Built on <a href="https://github.com/darwinlau/CASPR" target="_blank" rel="noopener noreferrer">CASPR by Darwin Lau</a></div>
+      </div>
+
+      <div class="research-card" style="cursor: default; opacity: 0.65;">
+        <div class="card-header">
+          <div class="card-header-left">
+            <span class="card-tag">Field Robotics</span>
+            <div class="card-title">Traxxas-Based Vineyard Grass Trimmer Robot <span style="font-size: 11px; font-weight: 600; background: var(--divider); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;">Coming Soon</span></div>
+            <div class="card-teaser">A hobby-to-industry field robotics project for autonomous grass trimming in vineyards, built on a Traxxas platform.</div>
+          </div>
+        </div>
+        <div class="card-pubs" style="font-style: italic;">Prototype and deployment notes coming soon</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2025 Hung Hon Cheng &nbsp;&middot;&nbsp; EPFL Lausanne &nbsp;&middot;&nbsp;
+  <a href="mailto:hung.cheng@epfl.ch">hung.cheng@epfl.ch</a>
+</footer>
+
+<script>
+    function toggleMenu() {
+    var nav = document.querySelector('.nav-links');
+    var btn = document.getElementById('hamburger');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.width = '100%';
+      nav.style.background = 'var(--bg)';
+      nav.style.padding = '8px 0 12px';
+      nav.style.borderTop = '1px solid var(--divider)';
+      btn.classList.add('active');
+    }
+  }
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-sun';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+  function toggleSurgical(card) {
+    const expand = card.querySelector('.surgical-expand');
+    const arrow = card.querySelector('.card-arrow');
+    const isOpen = expand.style.maxHeight && expand.style.maxHeight !== '0px';
+    expand.style.maxHeight = isOpen ? '0px' : expand.scrollHeight + 'px';
+    arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soft & Compliant Robotic Systems — Hung Hon Cheng (Paul)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .story-section { margin-bottom: 64px; }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .connector {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .connector::before, .connector::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    .pub-ref {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .pub-ref a { color: var(--accent); text-decoration: none; }
+    .pub-ref a:hover { text-decoration: underline; }
+
+    .ongoing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .ongoing-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .ongoing-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .future-card {
+      background: var(--card-bg);
+      border: 1px dashed var(--divider);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      opacity: 0.8;
+    }
+    .future-card .ongoing-title { color: var(--text-muted); }
+
+    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .media-box {
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+    .media-box video, .media-box img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    @media (max-width: 1024px) {
+      div[style*="padding: 48px 80px"] { padding: 24px 16px !important; }
+      div[style*="display: flex; gap: 40px"] {
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: center !important;
+        margin-bottom: 32px !important;
+      }
+      div[style*="display: flex; gap: 40px"] p {
+        width: 100% !important;
+      }
+      div[style*="display: flex; gap: 32px"] {
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: center !important;
+      }
+      div[style*="display: flex; gap: 32px"] p {
+        width: 100% !important;
+      }
+      div[style*="display: flex; gap: 32px"] img,
+      div[style*="display: flex; gap: 40px"] video,
+      div[style*="display: flex; gap: 40px"] div[style*="aspect-ratio: 9/16"] {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+      }
+      .img-grid-2 { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="nav-brand">Hung Hon Cheng (Paul)</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <!-- <li><a href="index.html#contact">Contact</a></li> -->
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-content" style="padding: 48px 80px; max-width: 960px; margin: 0 auto;">
+
+  <a class="back-link" href="research.html"><i class="fas fa-arrow-left"></i> Back to Research</a>
+
+  <span style="display:inline-block; background: var(--accent-dk); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:4px; letter-spacing:0.6px; text-transform:uppercase; margin-bottom:12px;">Soft Robotics</span>
+  <h1 class="section-heading" style="margin-bottom: 16px;">Soft &amp; Compliant Robotic Systems</h1>
+
+  <p class="body-text" style="margin-bottom: 48px;">
+    Rigid robots are strong and precise, but they interact with the world in one mode: hard contact. Soft robots offer something different — bodies that deform, conform, and absorb, making contact that is inherently safe and adaptable. The challenge is that softness without structure is just floppiness. This work is about designing the geometry of soft materials so their compliance is programmable: deforming in exactly the directions and magnitudes you want, while resisting in others.
+  </p>
+
+  <!-- Step 1: Dexterous Gripper -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">1</div>
+      <div class="step-title">Dexterous Soft Gripping: Learning from Human Fingers</div>
+    </div>
+    <p class="body-text">
+      Human fingers are extraordinarily capable because they combine compliance with geometry — curved surfaces, distributed contact, and the ability to wrap around objects. The Offset Trimmed Helicoid (OTH) gripper replicates this principle in a three-finger soft structure. Each finger follows a helicoid geometry that produces natural, finger-like curling under actuation, enabling dexterous grasps and soft, safe contact — the kind of interaction required for handling delicate objects or working alongside humans.
+    </p>
+    <div class="media-box">
+      <video autoplay loop muted playsinline controls>
+        <source src="assets/video/icra_1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="pub-ref">
+      Q Guan, HH Cheng, J Hughes — Dexterous Three-Finger Gripper based on Offset Trimmed Helicoids (OTHs). <em>IEEE International Conference on Robotics and Automation (ICRA)</em>, 2025
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 2: Exoskeleton -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">2</div>
+      <div class="step-title">Scaling Up: Soft Exoskeletons for Human Interaction</div>
+    </div>
+    <p class="body-text">
+      The same structural principles that make a gripper safe to grasp with also make a wearable structure safe to wear. A soft exoskeleton built from the similar design can conform to the human body, deliver assistive forces, and absorb impacts — without the rigid shells and hard hinges of traditional exoskeletons that constrain natural movement. This extends the reach of soft robotics from manipulation to human augmentation: wearable structures that assist, protect, and interface directly with the body, as well as providing a compliant body for mobile manipulators that can work safely alongside people.
+    </p>
+    <div class="media-box" style="max-width: 560px;">
+      <img src="assets/video/exoskeleton.png" alt="Soft exoskeleton concept" style="width:100%; height:100%; object-fit:contain;">
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 3: Lattice Structure -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">3</div>
+      <div class="step-title">Programmable Compliance: Lattice Structure Musculoskeletal Robots</div>
+    </div>
+    <div class="flex-hero" style="display: flex; gap: 40px; align-items: center; margin-bottom: 48px;">
+      <p class="body-text" style="margin-bottom: 0; flex: 1;">
+        Beyond individual grippers, the deeper question is: can you design the mechanical behaviour of a soft body from first principles? Lattice structures — periodic geometric networks — make this possible. By varying the topology and anisotropy of the lattice, you control which directions the structure is stiff, which it is compliant, and how it deforms under load. This work shows how programmable lattice geometry can produce musculoskeletal robot bodies that deform in precisely specified ways, opening the door to soft robots whose physical behaviour is engineered rather than discovered by trial and error.
+      </p>
+      <div style="flex-shrink: 0; width: 180px; aspect-ratio: 9/16; border-radius: 10px; border: 1px solid var(--divider); overflow: hidden; background: var(--card-bg);">
+        <video style="width:100%; height:100%; object-fit:cover;" autoplay loop muted playsinline controls>
+          <source src="assets/video/science_advance_video_2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div style="aspect-ratio: 16/9; border-radius: 8px; border: 1px solid var(--divider); overflow: hidden; background: var(--card-bg);">
+      <video style="width:100%; height:100%; object-fit:cover;" autoplay loop muted playsinline controls>
+        <source src="assets/video/science_advance_video_1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="pub-ref">
+      Q Guan, B Dai, HH Cheng, J Hughes — Lattice Structure Musculoskeletal Robots: Harnessing Programmable Geometric Topology and Anisotropy. <em>Science Advances</em>, 2025
+    </div>
+
+    <!-- Subsection: Gripper & Sensor -->
+    <div style="margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--divider);">
+      <div style="font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 12px;">
+        Extension Application: Soft Gripper &amp; Sensor
+      </div>
+      <div style="display: flex; gap: 32px; align-items: center;">
+        <p class="body-text" style="margin-bottom: 0; flex: 1;">
+          The same lattice design principles extend directly to functional end-effectors. By tuning the geometric topology, a lattice structure can be designed to conform around an object, grasp it gently, and simultaneously sense contact forces — all without a single rigid component. This makes lattice-based grippers and sensors inherently safe for delicate tasks such as harvesting soft fruit without bruising.
+        </p>
+        <img src="assets/video/gripper_design.png" alt="Lattice-based soft gripper and sensor design" style="flex-shrink:0; width:280px; border-radius:8px; border:1px solid var(--divider); background:var(--card-bg);">
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Ongoing -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num" style="background: var(--accent-dk);">→</div>
+      <div class="step-title">Where This Is Going</div>
+    </div>
+    <p class="body-text">Ongoing work extending the lattice structure framework:</p>
+
+    <div class="ongoing-card">
+      <div class="ongoing-title"><i class="fas fa-dna" style="margin-right:8px; color:var(--accent);"></i>Muscle-Like Soft Robot</div>
+      <div class="ongoing-desc">Extending the programmable lattice approach to structures that contract and extend like biological muscle — including muscle-like structures in the human body capable of complex, multi-axis deformation. This work is currently under review.</div>
+    </div>
+
+    <div class="future-card">
+      <div class="ongoing-title"><i class="fas fa-person-walking" style="margin-right:8px; color:var(--accent);"></i>First Wearable Soft Exoskeleton &amp; Mobile Soft Manipulator</div>
+      <div class="ongoing-desc">Realising the first fully wearable soft exoskeleton and a mobile soft manipulator built on the same compliant structural principles — enabling safe physical human-robot interaction for both assistive and manipulation tasks. Under preparation.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Hung Hon Cheng &nbsp;·&nbsp; EPFL Lausanne &nbsp;·&nbsp;
+  <a href="mailto:hung.cheng@epfl.ch">hung.cheng@epfl.ch</a>
+</footer>
+
+<script>
+    function toggleMenu() {
+    var nav = document.querySelector('.nav-links');
+    var btn = document.getElementById('hamburger');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.width = '100%';
+      nav.style.background = 'var(--bg)';
+      nav.style.padding = '8px 0 12px';
+      nav.style.borderTop = '1px solid var(--divider)';
+      btn.classList.add('active');
+    }
+  }
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-sun';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+</script>
+</body>
+</html>

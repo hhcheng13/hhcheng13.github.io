@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning on Physically Adaptive Systems — Hung Hon Cheng (Paul)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .story-section { margin-bottom: 64px; }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .connector {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .connector::before, .connector::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    .pub-ref {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .ongoing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .ongoing-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .ongoing-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .future-card {
+      background: var(--card-bg);
+      border: 1px dashed var(--divider);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      opacity: 0.8;
+    }
+    .future-card .ongoing-title { color: var(--text-muted); }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .task-cell {
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      background: var(--card-bg);
+      position: relative;
+    }
+    .task-cell video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .task-label {
+      position: absolute;
+      bottom: 6px; left: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .media-box {
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+    .media-box video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .vs-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 28px 0 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .vs-divider::before, .vs-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    .sub-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="nav-brand">Hung Hon Cheng (Paul)</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <!-- <li><a href="index.html#contact">Contact</a></li> -->
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-content" style="padding: 48px 80px; max-width: 960px; margin: 0 auto;">
+
+  <a class="back-link" href="research.html"><i class="fas fa-arrow-left"></i> Back to Research</a>
+
+  <span style="display:inline-block; background: var(--accent-dk); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:4px; letter-spacing:0.6px; text-transform:uppercase; margin-bottom:12px;">Robot Learning</span>
+  <h1 class="section-heading" style="margin-bottom: 16px;">Learning on Physically Adaptive Systems</h1>
+
+  <p class="body-text" style="margin-bottom: 48px;">
+    Many manipulation tasks are too complex to hand-code: the behaviour is implicit, the state space too high-dimensional, or the environment too variable for classical controllers. Learning-based methods are one of the solutions — but they need data, and good data requires good control. Once a <a href="research-teleop.html" style="color:var(--accent); text-decoration:none;">teleoperation platform</a> is in place, it becomes a data collection engine. Human demonstrations captured through teleoperation feed imitation learning pipelines, and the resulting policies can execute tasks autonomously — closing the loop from human intent to robot behaviour.
+  </p>
+
+  <!-- Step 1 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">1</div>
+      <div class="step-title">From Demonstration to Autonomous Policy</div>
+    </div>
+    <p class="body-text">
+      A wide range of manipulation tasks — harvesting, inspection, leaf removal, monitoring, trimming, seeding — can be learned from human demonstrations and executed autonomously by a policy model. Compared to traditional visual servoing approaches, learning-based policies carry more implicit decision-making capacity: they generalise across object appearance, position variation, and scene complexity without explicit programming.
+    </p>
+
+    <!-- 6-task grid -->
+    <div class="task-grid">
+      <div class="task-cell">
+        <video autoplay loop muted playsinline controls><source src="assets/video/harvesting.mp4" type="video/mp4"></video>
+        <span class="task-label">Harvesting</span>
+      </div>
+      <div class="task-cell">
+        <video autoplay loop muted playsinline controls><source src="assets/video/inspection.mp4" type="video/mp4"></video>
+        <span class="task-label">Inspection</span>
+      </div>
+      <div class="task-cell">
+        <video autoplay loop muted playsinline controls><source src="assets/video/leaf_remove.mp4" type="video/mp4"></video>
+        <span class="task-label">Leaf Removal</span>
+      </div>
+      <div class="task-cell">
+        <video autoplay loop muted playsinline controls><source src="assets/video/monitoring.mp4" type="video/mp4"></video>
+        <span class="task-label">Monitoring</span>
+      </div>
+      <div class="task-cell">
+        <video autoplay loop muted playsinline controls><source src="assets/video/trimming.mp4" type="video/mp4"></video>
+        <span class="task-label">Trimming</span>
+      </div>
+      <div class="task-cell">
+        <video autoplay loop muted playsinline controls><source src="assets/video/seeding.mp4" type="video/mp4"></video>
+        <span class="task-label">Seeding</span>
+      </div>
+    </div>
+
+    <div class="vs-divider">vs. traditional visual servoing</div>
+
+    <div class="flex-row" style="display: flex; gap: 16px; align-items: flex-start;">
+      <div style="flex: 1;">
+        <div class="sub-label">Traditional: YOLO-based visual servoing</div>
+        <div class="media-box">
+          <video autoplay loop muted playsinline controls><source src="assets/video/cafe_harvesting_yolo.mp4" type="video/mp4"></video>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.6;">Detects objects and moves to them — but decisions are explicit and brittle to distribution shift.</p>
+      </div>
+      <div style="flex: 1;">
+        <div class="sub-label">Learning-based: autonomous object clearing</div>
+        <div class="media-box">
+          <video autoplay loop muted playsinline controls><source src="assets/video/lab_testx10speed.mp4" type="video/mp4"></video>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.6;">The policy autonomously clears every object it has learned — no explicit object list or sequencing rules needed.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <div class="sub-label">Robustness to environment changes</div>
+      <div class="media-box">
+        <video autoplay loop muted playsinline controls><source src="assets/video/flashing_light.mp4" type="video/mp4"></video>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.6;">Under an architecture designed to minimise sensitivity to environment variation, the policy remains stable under severe lighting disturbances.</p>
+    </div>
+
+    <div class="pub-ref">
+      HH Cheng, C Pan, A Desogus, Q Guan, L Sutter, J Hughes — Vision-Guided Agricultural Tasks with Diffusion-Based Motion Learning Using a Human-Robot Collaborative System. <em>IEEE Transactions on Automation Science and Engineering (T-ASE)</em>, under review, 2025
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 2 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">2</div>
+      <div class="step-title">Online Correction: Learning with Minimal Human Intervention</div>
+    </div>
+    <p class="body-text">
+      No policy is perfect from the start. When a robot fails — because the environment shifted, the training data was insufficient, or the task varied — the natural response is to dump more data and retrain. This work proposes a more efficient path: a human observes the failure, provides the minimal corrective input needed, and the robot continues autonomously. The result is an online learning loop that recovers from failures far more efficiently than passive data accumulation.
+    </p>
+    <div class="img-grid-2">
+      <div>
+        <div class="media-box">
+          <video autoplay loop muted playsinline controls><source src="assets/video/iros_online_correction_1.mp4" type="video/mp4"></video>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.6;">A human provides minimal corrective guidance the moment the robot reaches its limit.</p>
+      </div>
+      <div>
+        <div class="media-box">
+          <video autoplay loop muted playsinline controls><source src="assets/video/iros_online_correction_2.mp4" type="video/mp4"></video>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.6;">After targeted correction, success rate exceeds what random data collection achieves with far more data.</p>
+      </div>
+    </div>
+    <div class="pub-ref">
+      C Pan, HH Cheng, J Hughes — Online Imitation Learning for Manipulation via Decaying Relative Correction through Teleoperation. <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2025
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 3 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">3</div>
+      <div class="step-title">Human–Robot Collaboration</div>
+    </div>
+    <p class="body-text">
+      Autonomy and human control are not opposites — they exist on a spectrum. The most capable systems know when to act alone and when to defer. This demonstrates a robot that operates autonomously while remaining aware of human presence and intent, adjusting its behaviour to collaborate naturally in a shared workspace.
+    </p>
+    <div class="media-box">
+      <video autoplay loop muted playsinline controls><source src="assets/video/cafe_human_robot_interaction.mp4" type="video/mp4"></video>
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic; line-height: 1.6;">The right arm is human-controlled via teleoperation; the left arm runs the same autonomous policy as above — both operating simultaneously in a shared workspace.</p>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Future -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num" style="background: var(--accent-dk);">→</div>
+      <div class="step-title">Where This Is Going</div>
+    </div>
+    <p class="body-text">Three directions building on this foundation:</p>
+
+    <div class="ongoing-card">
+      <div class="ongoing-title"><i class="fas fa-hand-pointer" style="margin-right:8px; color:var(--accent);"></i>Robot-Assisted Teleoperation</div>
+      <div class="ongoing-desc">Instead of the human controlling everything, the robot understands the task and scene — and predicts what the operator is trying to do. It offers assistive corrections in real time, reducing cognitive load and improving precision. The human stays in control, but the robot becomes a co-pilot rather than a passive tool.</div>
+    </div>
+
+    <div class="ongoing-card">
+      <div class="ongoing-title"><i class="fas fa-shapes" style="margin-right:8px; color:var(--accent);"></i>Learning the Morphing Body</div>
+      <div class="ongoing-desc">Rather than learning to complete a specific task, the robot learns what its own body is capable of — and how to reconfigure it to best suit the task at hand. This is particularly relevant for reconfigurable cable robots, where the physical structure itself is a design variable. The policy learns the body, not just the behaviour.</div>
+    </div>
+
+    <div class="future-card">
+      <div class="ongoing-title"><i class="fas fa-globe" style="margin-right:8px; color:var(--accent);"></i>Foundation Models for Large-Scale Manipulation</div>
+      <div class="ongoing-desc">Cable robots and multi-arm systems operate over workspaces too large and too varied for task-specific policies. The goal is a foundation model that understands spatial task context at scale — one that can reason about where to go, what to grasp, and how to coordinate across a large workspace, enabling zero-shot or few-shot adaptation to new environments and tasks without retraining from scratch. Under preparation.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Hung Hon Cheng &nbsp;·&nbsp; EPFL Lausanne &nbsp;·&nbsp;
+  <a href="mailto:hung.cheng@epfl.ch">hung.cheng@epfl.ch</a>
+</footer>
+
+<script>
+    function toggleMenu() {
+    var nav = document.querySelector('.nav-links');
+    var btn = document.getElementById('hamburger');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.width = '100%';
+      nav.style.background = 'var(--bg)';
+      nav.style.padding = '8px 0 12px';
+      nav.style.borderTop = '1px solid var(--divider)';
+      btn.classList.add('active');
+    }
+  }
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-sun';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+</script>
+</body>
+</html>

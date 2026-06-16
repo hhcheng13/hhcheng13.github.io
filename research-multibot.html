@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Robot Collaboration — Hung Hon Cheng (Paul)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .media-box {
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+    .media-box video, .media-box img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .robot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .robot-card {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+    .robot-card-icon {
+      font-size: 22px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .robot-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .robot-card-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .robot-card-role {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+    }
+
+    .coming-soon-banner {
+      background: var(--card-bg);
+      border: 1px dashed var(--divider);
+      border-radius: 10px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .coming-soon-banner i {
+      font-size: 28px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .coming-soon-banner p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      div[style*="padding: 48px 80px"] { padding: 24px 16px !important; }
+      .robot-grid { grid-template-columns: 1fr; }
+      .flex-hero {
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: center !important;
+        margin-bottom: 32px !important;
+      }
+      .flex-hero p {
+        width: 100% !important;
+      }
+      .flex-hero > div[style*="width: 340px"] {
+        width: 100% !important;
+        max-width: 360px !important;
+        margin: 0 auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="nav-brand">Hung Hon Cheng (Paul)</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <!-- <li><a href="index.html#contact">Contact</a></li> -->
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-content" style="padding: 48px 80px; max-width: 960px; margin: 0 auto;">
+
+  <a class="back-link" href="research.html"><i class="fas fa-arrow-left"></i> Back to Research</a>
+
+  <span style="display:inline-block; background: var(--accent-dk); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:4px; letter-spacing:0.6px; text-transform:uppercase; margin-bottom:12px;">Multi-Robot Systems</span>
+  <h1 class="section-heading" style="margin-bottom: 16px;">Multi-Robot Collaboration</h1>
+
+  <div class="flex-hero" style="display: flex; gap: 40px; align-items: center; margin-bottom: 48px;">
+    <p class="body-text" style="margin-bottom: 0; flex: 1;">
+      No single robot design is optimal for every part of a task. A cable robot can cover a large workspace but lacks fine dexterity. A robotic arm is precise but immobile. A humanoid can navigate human-scale environments. A drone can fly into spaces nothing else can reach. The idea behind heterogeneous multi-robot systems is to leverage the complementary strengths of each platform — combining them into a single collaborative system that is more capable than the sum of its parts, under shared autonomy and coordinated control.
+    </p>
+    <div style="flex-shrink: 0; width: 340px; aspect-ratio: 16/9; border-radius: 10px; border: 1px solid var(--divider); overflow: hidden; background: var(--card-bg);">
+      <video style="width:100%; height:100%; object-fit:cover;" autoplay loop muted playsinline controls>
+        <source src="assets/video/cafe_on_cable.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- Robot roles -->
+  <h2 style="font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 20px;">Each platform plays a distinct role</h2>
+
+  <div class="robot-grid">
+    <div class="robot-card">
+      <div class="robot-card-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+      <div class="robot-card-title">Cable Robot</div>
+      <div class="robot-card-desc">Covers large workspaces that no fixed arm can reach. Responsible for high-level transport — moving payloads or other robots across the full operational area.</div>
+      <span class="robot-card-role">Large-space transport</span>
+    </div>
+    <div class="robot-card">
+      <div class="robot-card-icon"><i class="fas fa-hand-rock"></i></div>
+      <div class="robot-card-title">Robotic Arms (multi-arm)</div>
+      <div class="robot-card-desc">Mounted on or deployed near the cable robot, these handle fine dexterous manipulation in small local areas — tasks that require precision beyond what a cable system can provide.</div>
+      <span class="robot-card-role">Dexterous local manipulation</span>
+    </div>
+    <div class="robot-card">
+      <div class="robot-card-icon"><i class="fas fa-walking"></i></div>
+      <div class="robot-card-title">Humanoid / Mobile Bimanual Robot</div>
+      <div class="robot-card-desc">Operates in the interface zone between robot and human — environments designed for people. Can handle tasks that require human-scale reach, upright posture, or social proximity.</div>
+      <span class="robot-card-role">Human-scale environments</span>
+    </div>
+    <div class="robot-card">
+      <div class="robot-card-icon"><i class="fas fa-drone-alt fa-fw"></i><i class="fas fa-helicopter" style="font-size:18px;"></i></div>
+      <div class="robot-card-title">Drone / Small Mobile Robot</div>
+      <div class="robot-card-desc">Flies or navigates into narrow spaces unreachable by larger platforms. Provides additional viewpoints for perception, inspection, or situational awareness across the whole system.</div>
+      <span class="robot-card-role">Narrow access · extra perception</span>
+    </div>
+  </div>
+
+  <!-- Mobile bimanual image -->
+  <div style="margin-top: 8px;">
+    <div style="border-radius: 8px; border: 1px solid var(--divider); overflow: hidden; background: var(--card-bg);">
+      <img src="assets/video/mobile bimanual.jpg" alt="Mobile bimanual robot" style="width:100%; display:block; object-fit:contain;">
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">A mobile bimanual platform — operating at the intersection of human-scale reach and robotic precision.</p>
+  </div>
+
+  <!-- Coming soon -->
+  <div class="coming-soon-banner">
+    <i class="fas fa-flask"></i>
+    <p>This research direction is under active investigation. A detailed breakdown of the coordination framework, shared autonomy architecture, and experimental results will be published here soon.</p>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Hung Hon Cheng &nbsp;·&nbsp; EPFL Lausanne &nbsp;·&nbsp;
+  <a href="mailto:hung.cheng@epfl.ch">hung.cheng@epfl.ch</a>
+</footer>
+
+<script>
+    function toggleMenu() {
+    var nav = document.querySelector('.nav-links');
+    var btn = document.getElementById('hamburger');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.width = '100%';
+      nav.style.background = 'var(--bg)';
+      nav.style.padding = '8px 0 12px';
+      nav.style.borderTop = '1px solid var(--divider)';
+      btn.classList.add('active');
+    }
+  }
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-sun';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+</script>
+</body>
+</html>

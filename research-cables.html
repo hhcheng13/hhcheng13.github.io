@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cable-Driven Parallel Robots — Hung Hon Cheng (Paul)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .story-section { margin-bottom: 64px; }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .img-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .img-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .img-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+    .img-box {
+      aspect-ratio: 1/1;
+      background: var(--card-bg);
+      border-radius: 6px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-box img { width: 100%; height: 100%; object-fit: contain; }
+
+    .img-box-wide {
+      aspect-ratio: 4/3;
+      background: var(--card-bg);
+      border-radius: 6px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-box-wide img { width: 100%; height: 100%; object-fit: contain; }
+
+    .connector {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .connector::before, .connector::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    .ongoing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .ongoing-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .ongoing-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .pub-ref {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .pub-ref a { color: var(--accent); text-decoration: none; }
+    .pub-ref a:hover { text-decoration: underline; }
+
+    .coming-soon-badge {
+      display: inline-block;
+      font-size: 10px; font-weight: 700;
+      background: var(--divider); color: var(--text-muted);
+      padding: 2px 8px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-left: 8px; vertical-align: middle;
+    }
+
+    .placeholder-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .placeholder-box {
+      aspect-ratio: 1/1;
+      background: var(--card-bg);
+      border: 1px dashed var(--divider);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 12px;
+    }
+
+    @media (max-width: 768px) {
+      div[style*="padding: 48px 80px"] { padding: 24px 16px !important; }
+      div[style*="display: flex; gap: 40px"] { flex-direction: column !important; gap: 20px !important; }
+      div[style*="display: flex; gap: 40px"] video { width: 100% !important; }
+      div[style*="display: flex; gap: 12px"],
+      div[style*="display: flex; gap: 16px"],
+      div[style*="display: flex; gap: 28px"] {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+      div[style*="display: flex; gap: 28px"] p {
+        width: 100% !important;
+      }
+      div[style*="display: flex; gap: 28px"] img {
+        margin: 0 auto !important;
+      }
+      .img-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+      .img-grid-5 { grid-template-columns: repeat(2, 1fr) !important; }
+      .img-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+      .img-grid-2 { grid-template-columns: 1fr !important; }
+      .placeholder-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      .nav-links { gap: 12px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="nav-brand">Hung Hon Cheng (Paul)</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <!-- <li><a href="index.html#contact">Contact</a></li> -->
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-content" style="padding: 48px 80px; max-width: 960px; margin: 0 auto;">
+
+  <a class="back-link" href="research.html"><i class="fas fa-arrow-left"></i> Back to Research</a>
+
+  <span style="display:inline-block; background: var(--accent-dk); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:4px; letter-spacing:0.6px; text-transform:uppercase; margin-bottom:12px;">Reconfigurable Robots</span>
+  <h1 class="section-heading" style="margin-bottom: 16px;">Cable-Driven Parallel Robots</h1>
+  <div class="flex-hero" style="display: flex; gap: 40px; align-items: center; margin-bottom: 48px;">
+    <p class="body-text" style="margin-bottom: 0; flex: 1;">
+      Cable-driven parallel robots use cables instead of rigid links to move an end-effector through space. They are lightweight, scalable to large workspaces, and capable of exerting high forces — making them well-suited for tasks that conventional robot arms cannot reach. The challenge: cables can only pull, not push. This single constraint shapes everything — from how the robot moves, to where it can go, to how you plan its motions safely.
+    </p>
+    <video width="360" style="flex-shrink:0; border-radius:10px; border:1px solid var(--divider);" controls preload="metadata">
+      <source src="assets/video/cable_robot_ur.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">1</div>
+      <div class="step-title">The Problem: Cables Collide</div>
+    </div>
+    <p class="body-text">
+      When a cable robot moves, its cables sweep through space — and they can collide with obstacles in the environment, or with each other. Unlike a rigid-link arm where the geometry is fixed, cable paths change continuously with the robot's configuration. Planning motions that are both reachable and collision-free is a core unsolved challenge.
+    </p>
+    <div class="flex-row" style="display: flex; gap: 12px;">
+      <div class="img-box-wide" style="flex: 1;"><img src="assets/video/mmt_1.gif" alt="Cable collision 1"></div>
+      <div class="img-box-wide" style="flex: 1;"><img src="assets/video/mmt_2.gif" alt="Cable collision 2"></div>
+      <div style="flex: 1; border-radius: 8px; overflow: hidden;">
+        <video autoplay muted loop playsinline controls style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <source src="assets/video/compressed/Cu Brick Sim 1.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 2 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">2</div>
+      <div class="step-title">Workspace Analysis: Where Can It Actually Go?</div>
+    </div>
+    <p class="body-text">
+      Before planning any motion, you need to know what the robot's reachable workspace looks like — accounting for cable tension limits, interference, and force balance. These images show the computed workspace under different cable configurations and constraint conditions.
+    </p>
+    <div class="pub-ref" style="margin-bottom: 20px;">HH Cheng, D Lau — Ray-based Cable and Obstacle Interference-Free Workspace for Cable-Driven Parallel Robots. <em>Mechanism and Machine Theory</em>, 2022</div>
+    <div class="img-grid-5">
+      <div class="img-box"><img src="assets/video/mmt_10.png" alt="Workspace 1"></div>
+      <div class="img-box"><img src="assets/video/mmt_11.png" alt="Workspace 2"></div>
+      <div class="img-box"><img src="assets/video/mmt_12.png" alt="Workspace 3"></div>
+      <div class="img-box"><img src="assets/video/mmt_13.png" alt="Workspace 4"></div>
+      <div class="img-box"><img src="assets/video/mmt_14.png" alt="Workspace 5"></div>
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">How obstacles occupy the workspace — the black lines indicate the collision-free regions.</p>
+
+    <div style="display: flex; gap: 16px; align-items: center; margin-top: 16px;">
+      <div class="img-box" style="width: 260px; flex-shrink: 0; aspect-ratio: 5/4;"><img src="assets/video/mmt_9.png" alt="Cable robot"></div>
+      <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div class="img-box-wide"><img src="assets/video/mmt_3.gif" alt="Workspace boundary 1"></div>
+        <div class="img-box-wide"><img src="assets/video/mmt_4.gif" alt="Workspace boundary 2"></div>
+      </div>
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">How the cable-cable collision workspace boundary (blue dots) looks like.</p>
+
+    <div class="img-grid-4" style="margin-top: 24px;">
+      <div class="img-box"><img src="assets/video/mmt_8.png" alt="General cable robot 1"></div>
+      <div class="img-box"><img src="assets/video/mmt_5.gif" alt="General cable robot 2"></div>
+      <div class="img-box"><img src="assets/video/mmt_6.gif" alt="General cable robot 3"></div>
+      <div class="img-box"><img src="assets/video/mmt_7.gif" alt="General cable robot 4"></div>
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">The method generalises to all types of cable-driven parallel robots and any obstacles that can be described by parametric equations.</p>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 3 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">3</div>
+      <div class="step-title">Verifying Feasibility Along the Path</div>
+    </div>
+    <p class="body-text">
+      Knowing the workspace is not enough — you need to verify that the entire planned trajectory satisfies wrench closure (the robot can actually hold the pose) and is free of cable interference. I further develop the ray-based method to analytically check these conditions efficiently along an entire trajectory, enabling real-time verification.
+    </p>
+    <div class="img-grid-5">
+      <div class="img-box"><img src="assets/video/ral_1.gif" alt="Feasibility check 1"></div>
+      <div class="img-box"><img src="assets/video/ral_2.gif" alt="Feasibility check 2"></div>
+      <div class="img-box"><img src="assets/video/ral_3.gif" alt="Feasibility check 3"></div>
+      <div class="img-box"><img src="assets/video/ral_4.gif" alt="Feasibility check 4"></div>
+      <div class="img-box"><img src="assets/video/ral_5.gif" alt="Feasibility check 5"></div>
+    </div>
+    <div class="pub-ref">Z Zhang, HH Cheng, D Lau — Efficient Wrench-Closure and Interference-Free Conditions Verification for Cable-Driven Parallel Robot Trajectories Using a Ray-Based Method. <em>IEEE Robotics and Automation Letters</em>, 2019</div>
+
+    <div class="img-grid-4" style="margin-top: 24px;">
+      <div class="img-box"><img src="assets/video/obstacle_avoidance_1.gif" alt="Collision avoidance 1"></div>
+      <div class="img-box"><img src="assets/video/obstacle_avoidance_2.gif" alt="Collision avoidance 2"></div>
+      <div class="img-box"><img src="assets/video/obstacle_avoidance_3.gif" alt="Collision avoidance 3"></div>
+      <div class="img-box"><img src="assets/video/obstacle_avoidance_4.gif" alt="Collision avoidance 4"></div>
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 4 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">4</div>
+      <div class="step-title">A Better Approach: Reconfigure the Anchors</div>
+    </div>
+    <div style="display: flex; gap: 28px; align-items: flex-start; margin-bottom: 16px;">
+      <p class="body-text" style="margin-bottom:0; flex:1;">
+        All of the above assumes fixed cable anchor points. But what if you could move them? A reconfigurable cable robot changes where its cables attach to the frame — effectively giving it a new body for each task. This dramatically expands what the robot can do, but introduces a new question: where should the anchors be?
+      </p>
+      <img src="assets/video/tro_1.png" style="width: 260px; flex-shrink:0; border-radius:8px; border:1px solid var(--divider); background:var(--card-bg);">
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata">
+        <source src="assets/video/reconfig_1.mp4" type="video/mp4">
+      </video>
+      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata">
+        <source src="assets/video/reconfig_2.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 5 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">5</div>
+      <div class="step-title">Analysing the Workspace per Anchor Configuration</div>
+    </div>
+    <p class="body-text">
+      For each possible anchor placement, the robot has a different reachable workspace. We can analytically find how their workspace looks like in reverse.
+    </p>
+    <img src="assets/video/cable_con_1.png" style="width:100%; border-radius:8px; border:1px solid var(--divider); margin-top:8px;">
+    <div class="pub-ref" style="margin-top:16px;">HH Cheng, D Lau, J Hughes — Determining Feasible Cable Attachment Locations for Cable-Driven Parallel Robots. <em>Cable-Driven Parallel Robots (CableCon)</em>, 2025</div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 6 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">6</div>
+      <div class="step-title">High-Dimensional Optimisation of Anchor Placement</div>
+    </div>
+    <p class="body-text">
+      Choosing the best anchor positions is a high-dimensional optimisation problem — the search space grows exponentially with the number of cables and degrees of freedom. I developed the first analytical framework for optimising cable attachment locations across varying workspace conditions, providing a systematic solution rather than trial-and-error.
+    </p>
+    <video style="width:100%; border-radius:8px; border:1px solid var(--divider); margin-top:8px;" controls preload="metadata">
+      <source src="assets/video/compressed/Tro 1.mp4" type="video/mp4">
+    </video>
+    <div class="pub-ref" style="margin-top:16px;">HH Cheng, D Lau — Cable Attachment Optimization for Reconfigurable Cable-Driven Parallel Robots Based on Various Workspace Conditions. <em>IEEE Transactions on Robotics</em>, 2023</div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 7 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">7</div>
+      <div class="step-title">The Real-World Challenge: Real-Time Computation</div>
+    </div>
+    <p class="body-text">
+      In practice, a reconfigurable cable robot needs to make reconfiguration decisions during operation — not just at design time. This demands algorithms fast enough to run in real time, which is far more demanding than offline optimisation. These results show early progress toward real-time anchor reconfiguration planning.
+    </p>
+    <div class="img-grid-4">
+      <div class="img-box"><img src="assets/video/new_tro_1.gif" alt="Real-time reconfiguration 1"></div>
+      <div class="img-box"><img src="assets/video/new_tro_2.gif" alt="Real-time reconfiguration 2"></div>
+      <div class="img-box"><img src="assets/video/new_tro_3.gif" alt="Real-time reconfiguration 3"></div>
+      <div class="img-box"><img src="assets/video/new_tro_4.gif" alt="Real-time reconfiguration 4"></div>
+    </div>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">Under preparation.</p>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+
+<script>
+  function toggleMenu() {
+    var nav = document.querySelector('.nav-links');
+    var btn = document.getElementById('hamburger');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.width = '100%';
+      nav.style.background = 'var(--bg)';
+      nav.style.padding = '8px 0 12px';
+      nav.style.borderTop = '1px solid var(--divider)';
+      btn.classList.add('active');
+    }
+  }
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-sun';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+</script>

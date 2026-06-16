@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teleoperation & Human-Robot Interaction — Hung Hon Cheng (Paul)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css?v=10" />
+  <style>
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .story-section { margin-bottom: 64px; }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    .connector {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .connector::before, .connector::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    .ongoing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .ongoing-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .ongoing-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .pub-ref {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .pub-ref a { color: var(--accent); text-decoration: none; }
+    .pub-ref a:hover { text-decoration: underline; }
+
+    /* Intuitive control highlight */
+    .highlight-pill {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 2px 10px;
+      border-radius: 5px;
+      letter-spacing: 0.2px;
+    }
+
+    /* Cross-link mini cards */
+    .cross-link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+    .cross-link-card {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 10px;
+      padding: 16px 18px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cross-link-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .cross-link-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .cross-link-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .cross-link-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .cross-link-arrow {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      display: block;
+      transition: color 0.2s;
+    }
+    .cross-link-card:hover .cross-link-arrow { color: var(--accent); }
+
+    .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .img-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+    .img-box {
+      aspect-ratio: 1/1;
+      background: var(--card-bg);
+      border-radius: 6px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-box img { width: 100%; height: 100%; object-fit: contain; }
+
+    .img-box-wide {
+      aspect-ratio: 4/3;
+      background: var(--card-bg);
+      border-radius: 6px;
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-box-wide img { width: 100%; height: 100%; object-fit: contain; }
+
+    .future-card {
+      background: var(--card-bg);
+      border: 1px dashed var(--divider);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      opacity: 0.8;
+    }
+    .future-card .ongoing-title { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="nav-brand">Hung Hon Cheng (Paul)</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <!-- <li><a href="index.html#contact">Contact</a></li> -->
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-content" style="padding: 48px 80px; max-width: 960px; margin: 0 auto;">
+
+  <a class="back-link" href="research.html"><i class="fas fa-arrow-left"></i> Back to Research</a>
+
+  <span style="display:inline-block; background: var(--accent-dk); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:4px; letter-spacing:0.6px; text-transform:uppercase; margin-bottom:12px;">Teleoperation & HRI</span>
+  <h1 class="section-heading" style="margin-bottom: 16px;">Teleoperation &amp; Human-Robot Interaction</h1>
+
+  <div class="flex-hero" style="display: flex; gap: 40px; align-items: center; margin-bottom: 48px;">
+    <p class="body-text" style="margin-bottom: 0; flex: 1;">
+      The most important property of any teleoperation system is <strong style="color: #e05252;">intuitive control</strong>. Teleoperation is the key that opens environments beyond human reach — surgical cavities, hazardous sites, large structures no hand could navigate directly. But this only works if the operator can focus entirely on the task, not on the interface. And once you have genuinely intuitive control, it unlocks everything else: robot learning from human demonstration, soft and reconfigurable bodies that a human can still command naturally, and multi-arm systems that one person can supervise.
+    </p>
+    <video width="340" style="flex-shrink:0; border-radius:10px; border:1px solid var(--divider);" autoplay loop muted playsinline controls>
+      <source src="assets/video/teleop_2.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Cross-links -->
+  <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 4px;">Intuitive control is the foundation for:</p>
+  <div class="cross-link-grid">
+    <a class="cross-link-card" href="research-learning.html">
+      <span class="cross-link-tag"><i class="fas fa-brain" style="margin-right:4px;"></i>Robot Learning</span>
+      <div class="cross-link-title">Learning on Physically Adaptive Systems</div>
+      <div class="cross-link-desc">Human demonstrations become training data — only possible when control is natural enough to capture intent.</div>
+      <span class="cross-link-arrow">Explore → </span>
+    </a>
+    <a class="cross-link-card" href="research-soft.html">
+      <span class="cross-link-tag"><i class="fas fa-hand-paper" style="margin-right:4px;"></i>Soft Robotics</span>
+      <div class="cross-link-title">Soft &amp; Compliant Robotic Systems</div>
+      <div class="cross-link-desc">Compliant bodies behave differently under force — the interface must translate human intent across that gap.</div>
+      <span class="cross-link-arrow">Explore → </span>
+    </a>
+    <a class="cross-link-card" href="research-multibot.html">
+      <span class="cross-link-tag"><i class="fas fa-robot" style="margin-right:4px;"></i>Multi-Robot Systems</span>
+      <div class="cross-link-title">Multi-Robot Collaboration</div>
+      <div class="cross-link-desc">One human supervising many arms requires control abstractions that scale without growing cognitive load.</div>
+      <span class="cross-link-arrow">Explore → </span>
+    </a>
+  </div>
+
+  <div class="connector" style="margin-top: 48px;"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 1 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">1</div>
+      <div class="step-title">The Foundation: Full 6-DoF Control</div>
+    </div>
+    <p class="body-text">
+      The minimum requirement for any meaningful teleoperation is full six-degree-of-freedom control — position and orientation, simultaneously, with a single hand. Achieving this intuitively means the mapping from hand motion to robot motion must feel direct and transparent, with no perceptible lag or axis confusion. This work develops a compact teleoperation controller that delivers full 6-DoF input while remaining small enough for surgical-scale tasks, validated across large-scale cable robot platforms.
+    </p>
+    <div class="img-grid-2">
+      <div style="aspect-ratio:16/9; border-radius:8px; border:1px solid var(--divider); overflow:hidden; background:var(--card-bg);">
+        <video style="width:100%; height:100%; object-fit:cover;" autoplay loop muted playsinline controls>
+          <source src="assets/video/compressed/Temch Paper Compressed.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div style="aspect-ratio:16/9; border-radius:8px; border:1px solid var(--divider); overflow:hidden; background:var(--card-bg);">
+        <video style="width:100%; height:100%; object-fit:cover;" autoplay loop muted playsinline controls>
+          <source src="assets/video/soft_arm_teleop.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="pub-ref">
+      HH Cheng, J Hughes — 8-DoFs Cable Driven Parallel Robots for Bimanual Teleoperation. <em>IEEE/ASME Transactions on Mechatronics</em>, 2025<br>
+      Q Guan, HH Cheng, B Dai, J Hughes — Control the Soft Robot Arm with its Physical Twin. <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2025
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 2 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">2</div>
+      <div class="step-title">Beyond 6-DoF: Commanding Redundant Joints</div>
+    </div>
+    <p class="body-text">
+      A 6-DoF input fully specifies end-effector pose — but many real robots have more joints than that. Redundant degrees of freedom allow the robot to change its elbow posture, avoid obstacles, or optimise joint limits while holding the same tip position. The challenge is giving the human a natural way to command this extra freedom without breaking the simplicity of the core interface. The idea is to extend the control framework to handle redundancy resolution, letting the operator influence arm configuration without thinking in joint angles.
+    </p>
+    <div class="img-grid-2">
+      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" autoplay loop muted playsinline controls>
+        <source src="assets/video/npj_1.mp4" type="video/mp4">
+      </video>
+      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" autoplay loop muted playsinline controls>
+        <source src="assets/video/blured_wbcd.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="pub-ref">
+      HH Cheng, J Hughes — Enhancing Bimanual Teleoperation with Variable Shoulder Distance: Manipulation in Varying-Scale of Applications. <em>npj Robotics</em>, 2025
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Step 3 -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">3</div>
+      <div class="step-title">Closing the Loop: Haptic Feedback</div>
+    </div>
+    <p class="body-text">
+      Vision alone is not enough. When a surgical instrument contacts tissue, or a cable robot reaches a tension limit, the operator needs to feel it — as they may not see it. Haptic feedback closes the sensory loop and makes remote manipulation feel grounded in physical reality. This step extends the teleoperation system with force feedback, so the controller becomes a two-way channel: intent flows to the robot, and contact information flows back to the human hand.
+    </p>
+    <div style="background: var(--card-bg); border: 1px solid var(--divider); border-radius: 10px; padding: 28px 32px; display: flex; align-items: center; gap: 20px;">
+      <i class="fas fa-hand-paper" style="font-size: 32px; color: var(--accent); flex-shrink:0;"></i>
+      <div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Force Feedback Integration</div>
+        <div style="font-size: 13px; color: var(--text-dim); line-height: 1.7;">Under active development. The controller hardware already supports force sensing; the rendering and stability framework is in progress.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <!-- Future directions -->
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num" style="background: var(--accent-dk);">→</div>
+      <div class="step-title">Where This Is Going</div>
+    </div>
+    <p class="body-text">Three directions on the horizon that build directly on this foundation:</p>
+
+    <div class="future-card">
+      <div class="ongoing-title"><i class="fas fa-vr-cardboard" style="margin-right:8px; color:var(--accent);"></i>VR Vision &amp; Immersive Telepresence</div>
+      <div class="ongoing-desc">Pairing the teleoperation controller with stereoscopic VR headsets to give the operator a first-person view from the robot's perspective. The goal is to recreate the sensation of being physically present at the robot's location — critical for surgical and inspection tasks where spatial depth perception matters.</div>
+    </div>
+
+    <div class="future-card">
+      <div class="ongoing-title"><i class="fas fa-sliders-h" style="margin-right:8px; color:var(--accent);"></i>Adaptive User Interfaces</div>
+      <div class="ongoing-desc">Control interfaces that adjust to the user — presenting different levels of abstraction for novice vs. expert operators, switching autonomy levels dynamically, and surfacing only the information relevant to the current task phase. The aim is a system that grows with the operator rather than forcing them to adapt to it.</div>
+    </div>
+
+    <div class="future-card">
+      <div class="ongoing-title"><i class="fas fa-hand-paper" style="margin-right:8px; color:var(--accent);"></i>Finger &amp; Hand Feedback Glove</div>
+      <div class="ongoing-desc">Extending haptic feedback beyond the wrist to individual fingers — a instrumented glove that renders contact forces and texture at the fingertip level, enabling dexterous manipulation tasks where whole-hand feel matters as much as gross position control.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Hung Hon Cheng &nbsp;·&nbsp; EPFL Lausanne &nbsp;·&nbsp;
+  <a href="mailto:hung.cheng@epfl.ch">hung.cheng@epfl.ch</a>
+</footer>
+
+<script>
+    function toggleMenu() {
+    var nav = document.querySelector('.nav-links');
+    var btn = document.getElementById('hamburger');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+      btn.classList.remove('active');
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.width = '100%';
+      nav.style.background = 'var(--bg)';
+      nav.style.padding = '8px 0 12px';
+      nav.style.borderTop = '1px solid var(--divider)';
+      btn.classList.add('active');
+    }
+  }
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'fas fa-sun';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+</script>
+</body>
+</html>
