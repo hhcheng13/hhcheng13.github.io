@@ -1,0 +1,1 @@
+!function(){function a(){window.dataLayer.push(arguments)}var n="G-54EWRHPFMP";if(n){window.dataLayer=window.dataLayer||[],window.gtag=a,a("js",new Date),a("config",n);var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id="+n,document.head.appendChild(t)}}();
