@@ -19,7 +19,7 @@ def make_cell(filepath):
     url = filepath.replace("\\", "/")
     if ext in VIDEO_EXTS:
         return f'''    <div style="aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; border: 1px solid var(--divider); background: var(--card-bg);">
-      <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;">
+<video autoplay loop muted playsinline controlsList="nodownload noremoteplayback" disablePictureInPicture style="width:100%; height:100%; object-fit:cover;">
         <source src="{url}" type="video/mp4">
       </video>
     </div>'''
