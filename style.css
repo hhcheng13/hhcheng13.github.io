@@ -12,7 +12,7 @@
   --text-dim:  #bdbdbd;
   --text-muted:#9e9e9e;
   --divider:   rgba(255,255,255,0.08);
-  --font:      'DM Sans', sans-serif;
+  --font:      'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 [data-theme="light"] {

@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Teleoperation & Human-Robot Interaction — Hung Hon Cheng (Paul)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css?v=10" />
@@ -316,13 +318,13 @@
       <div class="step-title">Closing the Loop: Haptic Feedback</div>
     </div>
     <p class="body-text">
-      Vision alone is not enough. When a surgical instrument contacts tissue, or a cable robot reaches a tension limit, the operator needs to feel it — as they may not see it. Haptic feedback closes the sensory loop and makes remote manipulation feel grounded in physical reality. This step extends the teleoperation system with force feedback, so the controller becomes a two-way channel: intent flows to the robot, and contact information flows back to the human hand.
+      Vision alone is not enough. When a surgical instrument contacts tissue, or a cable robot reaches a tension limit, the operator needs to feel it — as they may not see it. Haptic feedback closes the sensory loop and makes remote manipulation feel grounded in physical reality. In this system, force feedback is already integrated, so the controller operates as a two-way channel: intent flows to the robot, and contact information flows back to the human hand.
     </p>
     <div style="background: var(--card-bg); border: 1px solid var(--divider); border-radius: 10px; padding: 28px 32px; display: flex; align-items: center; gap: 20px;">
       <i class="fas fa-hand-paper" style="font-size: 32px; color: var(--accent); flex-shrink:0;"></i>
       <div>
         <div style="font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px;">Force Feedback Integration</div>
-        <div style="font-size: 13px; color: var(--text-dim); line-height: 1.7;">Under active development. The controller hardware already supports force sensing; the rendering and stability framework is in progress.</div>
+        <div style="font-size: 13px; color: var(--text-dim); line-height: 1.7;">Implemented on the teleoperation device, with haptic feedback already integrated to render contact and force information back to the operator.</div>
       </div>
     </div>
   </div>
@@ -392,3 +394,5 @@
 </script>
 </body>
 </html>
+
+
