@@ -205,7 +205,7 @@
       Cable-driven parallel robots use cables instead of rigid links to move an end-effector through space. They are lightweight, scalable to large workspaces, and capable of exerting high forces — making them well-suited for tasks that conventional robot arms cannot reach. The challenge: cables can only pull, not push. This single constraint shapes everything — from how the robot moves, to where it can go, to how you plan its motions safely.
     </p>
     <video width="360" style="flex-shrink:0; border-radius:10px; border:1px solid var(--divider);" controls preload="metadata" muted playsinline>
-      <source src="assets/video/cable_robot_ur.mp4" type="video/mp4">
+      <source src="assets/media/cable_robot_ur.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -219,11 +219,11 @@
       When a cable robot moves, its cables sweep through space — and they can collide with obstacles in the environment, or with each other. Unlike a rigid-link arm where the geometry is fixed, cable paths change continuously with the robot's configuration. Planning motions that are both reachable and collision-free is a core unsolved challenge.
     </p>
     <div class="flex-row" style="display: flex; gap: 12px;">
-      <div class="img-box-wide" style="flex: 1;"><img src="assets/video/mmt_1.gif" alt="Cable collision 1"></div>
-      <div class="img-box-wide" style="flex: 1;"><img src="assets/video/mmt_2.gif" alt="Cable collision 2"></div>
+      <div class="img-box-wide" style="flex: 1;"><img src="assets/media/mmt_1.gif" alt="Cable collision 1"></div>
+      <div class="img-box-wide" style="flex: 1;"><img src="assets/media/mmt_2.gif" alt="Cable collision 2"></div>
       <div style="flex: 1; border-radius: 8px; overflow: hidden;">
         <video autoplay muted loop playsinline controls style="width: 100%; height: 100%; object-fit: cover; display: block;">
-          <source src="assets/video/compressed/Cu Brick Sim 1.mp4" type="video/mp4">
+          <source src="assets/media/compressed-Cu Brick Sim 1.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -242,28 +242,28 @@
     </p>
     <div class="pub-ref" style="margin-bottom: 20px;">HH Cheng, D Lau — Ray-based Cable and Obstacle Interference-Free Workspace for Cable-Driven Parallel Robots. <em>Mechanism and Machine Theory</em>, 2022</div>
     <div class="img-grid-5">
-      <div class="img-box"><img src="assets/video/mmt_10.png" alt="Workspace 1"></div>
-      <div class="img-box"><img src="assets/video/mmt_11.png" alt="Workspace 2"></div>
-      <div class="img-box"><img src="assets/video/mmt_12.png" alt="Workspace 3"></div>
-      <div class="img-box"><img src="assets/video/mmt_13.png" alt="Workspace 4"></div>
-      <div class="img-box"><img src="assets/video/mmt_14.png" alt="Workspace 5"></div>
+      <div class="img-box"><img src="assets/media/mmt_10.png" alt="Workspace 1"></div>
+      <div class="img-box"><img src="assets/media/mmt_11.png" alt="Workspace 2"></div>
+      <div class="img-box"><img src="assets/media/mmt_12.png" alt="Workspace 3"></div>
+      <div class="img-box"><img src="assets/media/mmt_13.png" alt="Workspace 4"></div>
+      <div class="img-box"><img src="assets/media/mmt_14.png" alt="Workspace 5"></div>
     </div>
     <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">How obstacles occupy the workspace — the black lines indicate the collision-free regions.</p>
 
     <div style="display: flex; gap: 16px; align-items: center; margin-top: 16px;">
-      <div class="img-box" style="width: 260px; flex-shrink: 0; aspect-ratio: 5/4;"><img src="assets/video/mmt_9.png" alt="Cable robot"></div>
+      <div class="img-box" style="width: 260px; flex-shrink: 0; aspect-ratio: 5/4;"><img src="assets/media/mmt_9.png" alt="Cable robot"></div>
       <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-        <div class="img-box-wide"><img src="assets/video/mmt_3.gif" alt="Workspace boundary 1"></div>
-        <div class="img-box-wide"><img src="assets/video/mmt_4.gif" alt="Workspace boundary 2"></div>
+        <div class="img-box-wide"><img src="assets/media/mmt_3.gif" alt="Workspace boundary 1"></div>
+        <div class="img-box-wide"><img src="assets/media/mmt_4.gif" alt="Workspace boundary 2"></div>
       </div>
     </div>
     <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">How the cable-cable collision workspace boundary (blue dots) looks like.</p>
 
     <div class="img-grid-4" style="margin-top: 24px;">
-      <div class="img-box"><img src="assets/video/mmt_8.png" alt="General cable robot 1"></div>
-      <div class="img-box"><img src="assets/video/mmt_5.gif" alt="General cable robot 2"></div>
-      <div class="img-box"><img src="assets/video/mmt_6.gif" alt="General cable robot 3"></div>
-      <div class="img-box"><img src="assets/video/mmt_7.gif" alt="General cable robot 4"></div>
+      <div class="img-box"><img src="assets/media/mmt_8.png" alt="General cable robot 1"></div>
+      <div class="img-box"><img src="assets/media/mmt_5.gif" alt="General cable robot 2"></div>
+      <div class="img-box"><img src="assets/media/mmt_6.gif" alt="General cable robot 3"></div>
+      <div class="img-box"><img src="assets/media/mmt_7.gif" alt="General cable robot 4"></div>
     </div>
     <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">The method generalises to all types of cable-driven parallel robots and any obstacles that can be described by parametric equations.</p>
   </div>
@@ -280,19 +280,19 @@
       Knowing the workspace is not enough — you need to verify that the entire planned trajectory satisfies wrench closure (the robot can actually hold the pose) and is free of cable interference. I further develop the ray-based method to analytically check these conditions efficiently along an entire trajectory, enabling real-time verification.
     </p>
     <div class="img-grid-5">
-      <div class="img-box"><img src="assets/video/ral_1.gif" alt="Feasibility check 1"></div>
-      <div class="img-box"><img src="assets/video/ral_2.gif" alt="Feasibility check 2"></div>
-      <div class="img-box"><img src="assets/video/ral_3.gif" alt="Feasibility check 3"></div>
-      <div class="img-box"><img src="assets/video/ral_4.gif" alt="Feasibility check 4"></div>
-      <div class="img-box"><img src="assets/video/ral_5.gif" alt="Feasibility check 5"></div>
+      <div class="img-box"><img src="assets/media/ral_1.gif" alt="Feasibility check 1"></div>
+      <div class="img-box"><img src="assets/media/ral_2.gif" alt="Feasibility check 2"></div>
+      <div class="img-box"><img src="assets/media/ral_3.gif" alt="Feasibility check 3"></div>
+      <div class="img-box"><img src="assets/media/ral_4.gif" alt="Feasibility check 4"></div>
+      <div class="img-box"><img src="assets/media/ral_5.gif" alt="Feasibility check 5"></div>
     </div>
     <div class="pub-ref">Z Zhang, HH Cheng, D Lau — Efficient Wrench-Closure and Interference-Free Conditions Verification for Cable-Driven Parallel Robot Trajectories Using a Ray-Based Method. <em>IEEE Robotics and Automation Letters</em>, 2019</div>
 
     <div class="img-grid-4" style="margin-top: 24px;">
-      <div class="img-box"><img src="assets/video/obstacle_avoidance_1.gif" alt="Collision avoidance 1"></div>
-      <div class="img-box"><img src="assets/video/obstacle_avoidance_2.gif" alt="Collision avoidance 2"></div>
-      <div class="img-box"><img src="assets/video/obstacle_avoidance_3.gif" alt="Collision avoidance 3"></div>
-      <div class="img-box"><img src="assets/video/obstacle_avoidance_4.gif" alt="Collision avoidance 4"></div>
+      <div class="img-box"><img src="assets/media/obstacle_avoidance_1.gif" alt="Collision avoidance 1"></div>
+      <div class="img-box"><img src="assets/media/obstacle_avoidance_2.gif" alt="Collision avoidance 2"></div>
+      <div class="img-box"><img src="assets/media/obstacle_avoidance_3.gif" alt="Collision avoidance 3"></div>
+      <div class="img-box"><img src="assets/media/obstacle_avoidance_4.gif" alt="Collision avoidance 4"></div>
     </div>
   </div>
 
@@ -308,14 +308,14 @@
       <p class="body-text" style="margin-bottom:0; flex:1;">
         All of the above assumes fixed cable anchor points. But what if you could move them? A reconfigurable cable robot changes where its cables attach to the frame — effectively giving it a new body for each task. This dramatically expands what the robot can do, but introduces a new question: where should the anchors be?
       </p>
-      <img src="assets/video/tro_1.png" style="width: 260px; flex-shrink:0; border-radius:8px; border:1px solid var(--divider); background:var(--card-bg);">
+      <img src="assets/media/tro_1.png" style="width: 260px; flex-shrink:0; border-radius:8px; border:1px solid var(--divider); background:var(--card-bg);">
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
       <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata" muted playsinline>
-        <source src="assets/video/reconfig_1.mp4" type="video/mp4">
+        <source src="assets/media/reconfig_1.mp4" type="video/mp4">
       </video>
       <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata" muted playsinline>
-        <source src="assets/video/reconfig_2.mp4" type="video/mp4">
+        <source src="assets/media/reconfig_2.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -331,7 +331,7 @@
     <p class="body-text">
       For each possible anchor placement, the robot has a different reachable workspace. We can analytically find how their workspace looks like in reverse.
     </p>
-    <img src="assets/video/cable_con_1.png" style="width:100%; border-radius:8px; border:1px solid var(--divider); margin-top:8px;">
+    <img src="assets/media/cable_con_1.png" style="width:100%; border-radius:8px; border:1px solid var(--divider); margin-top:8px;">
     <div class="pub-ref" style="margin-top:16px;">HH Cheng, D Lau, J Hughes — Determining Feasible Cable Attachment Locations for Cable-Driven Parallel Robots. <em>Cable-Driven Parallel Robots (CableCon)</em>, 2025</div>
   </div>
 
@@ -347,7 +347,7 @@
       Choosing the best anchor positions is a high-dimensional optimisation problem — the search space grows exponentially with the number of cables and degrees of freedom. I developed the first analytical framework for optimising cable attachment locations across varying workspace conditions, providing a systematic solution rather than trial-and-error.
     </p>
     <video style="width:100%; border-radius:8px; border:1px solid var(--divider); margin-top:8px;" controls preload="metadata" muted playsinline>
-      <source src="assets/video/compressed/Tro 1.mp4" type="video/mp4">
+      <source src="assets/media/compressed-Tro 1.mp4" type="video/mp4">
     </video>
     <div class="pub-ref" style="margin-top:16px;">HH Cheng, D Lau — Cable Attachment Optimization for Reconfigurable Cable-Driven Parallel Robots Based on Various Workspace Conditions. <em>IEEE Transactions on Robotics</em>, 2023</div>
   </div>
@@ -364,10 +364,10 @@
       In practice, a reconfigurable cable robot needs to make reconfiguration decisions during operation — not just at design time. This demands algorithms fast enough to run in real time, which is far more demanding than offline optimisation. These results show early progress toward real-time anchor reconfiguration planning.
     </p>
     <div class="img-grid-4">
-      <div class="img-box"><img src="assets/video/new_tro_1.gif" alt="Real-time reconfiguration 1"></div>
-      <div class="img-box"><img src="assets/video/new_tro_2.gif" alt="Real-time reconfiguration 2"></div>
-      <div class="img-box"><img src="assets/video/new_tro_3.gif" alt="Real-time reconfiguration 3"></div>
-      <div class="img-box"><img src="assets/video/new_tro_4.gif" alt="Real-time reconfiguration 4"></div>
+      <div class="img-box"><img src="assets/media/new_tro_1.gif" alt="Real-time reconfiguration 1"></div>
+      <div class="img-box"><img src="assets/media/new_tro_2.gif" alt="Real-time reconfiguration 2"></div>
+      <div class="img-box"><img src="assets/media/new_tro_3.gif" alt="Real-time reconfiguration 3"></div>
+      <div class="img-box"><img src="assets/media/new_tro_4.gif" alt="Real-time reconfiguration 4"></div>
     </div>
     <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic;">Under preparation.</p>
   </div>
@@ -429,3 +429,4 @@
     }
   }
 </script>
+
