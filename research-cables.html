@@ -202,7 +202,7 @@
     <p class="body-text" style="margin-bottom: 0; flex: 1;">
       Cable-driven parallel robots use cables instead of rigid links to move an end-effector through space. They are lightweight, scalable to large workspaces, and capable of exerting high forces — making them well-suited for tasks that conventional robot arms cannot reach. The challenge: cables can only pull, not push. This single constraint shapes everything — from how the robot moves, to where it can go, to how you plan its motions safely.
     </p>
-    <video width="360" style="flex-shrink:0; border-radius:10px; border:1px solid var(--divider);" controls preload="metadata">
+    <video width="360" style="flex-shrink:0; border-radius:10px; border:1px solid var(--divider);" controls preload="metadata" muted playsinline>
       <source src="assets/video/cable_robot_ur.mp4" type="video/mp4">
     </video>
   </div>
@@ -309,10 +309,10 @@
       <img src="assets/video/tro_1.png" style="width: 260px; flex-shrink:0; border-radius:8px; border:1px solid var(--divider); background:var(--card-bg);">
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata">
+      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata" muted playsinline>
         <source src="assets/video/reconfig_1.mp4" type="video/mp4">
       </video>
-      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata">
+      <video style="width:100%; border-radius:8px; border:1px solid var(--divider);" controls preload="metadata" muted playsinline>
         <source src="assets/video/reconfig_2.mp4" type="video/mp4">
       </video>
     </div>
@@ -344,7 +344,7 @@
     <p class="body-text">
       Choosing the best anchor positions is a high-dimensional optimisation problem — the search space grows exponentially with the number of cables and degrees of freedom. I developed the first analytical framework for optimising cable attachment locations across varying workspace conditions, providing a systematic solution rather than trial-and-error.
     </p>
-    <video style="width:100%; border-radius:8px; border:1px solid var(--divider); margin-top:8px;" controls preload="metadata">
+    <video style="width:100%; border-radius:8px; border:1px solid var(--divider); margin-top:8px;" controls preload="metadata" muted playsinline>
       <source src="assets/video/compressed/Tro 1.mp4" type="video/mp4">
     </video>
     <div class="pub-ref" style="margin-top:16px;">HH Cheng, D Lau — Cable Attachment Optimization for Reconfigurable Cable-Driven Parallel Robots Based on Various Workspace Conditions. <em>IEEE Transactions on Robotics</em>, 2023</div>
@@ -371,6 +371,30 @@
   </div>
 
   <div class="connector"><i class="fas fa-arrow-down"></i></div>
+
+  <div class="story-section">
+    <div class="step-label">
+      <div class="step-num">→</div>
+      <div class="step-title">Where This Is Going</div>
+    </div>
+    <p class="body-text">
+      Two ongoing research directions building on this foundation:
+    </p>
+
+    <div class="ongoing-card">
+      <div class="ongoing-title">Real-Time Reconfigurable Cable Robot Action Planning</div>
+      <div class="ongoing-desc">
+        Developing planning algorithms that can decide, in real time, whether and how to reconfigure anchor positions during task execution — enabling truly adaptive cable robots that respond to changing environments.
+      </div>
+    </div>
+
+    <div class="ongoing-card">
+      <div class="ongoing-title">Force-Based Calibration of Anchoring Point Position</div>
+      <div class="ongoing-desc">
+        In practice, cable anchor positions are never perfectly known. This work uses measured cable forces to infer and correct anchor positions in situ — closing the loop between the physical robot and its model.
+      </div>
+    </div>
+  </div>
 
 
 <script src="assets/js/video-protection.js"></script>

@@ -100,9 +100,26 @@
     }
     .media-title { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
     .media-desc { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+    .media-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 720px;
+      margin-top: 20px;
+    }
+    .media-card-small img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .media-card-small .media-card-body { padding: 16px 18px; }
+    .media-card-small .media-title { font-size: 15px; }
+    .media-card-small .media-desc { font-size: 13px; }
 
     @media (max-width: 768px) {
       .research-grid { grid-template-columns: 1fr; }
+      .media-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -239,6 +256,34 @@
         <div class="media-outlet">CNN International &middot; Tech for Good &middot; Dec 2025</div>
         <div class="media-title">CAFEs Agricultural Robot System</div>
         <div class="media-desc">Featured in CNN International's Tech for Good segment, showcasing the CAFEs multi-arm system deployed in a real greenhouse for autonomous harvesting and human-in-the-loop learning. <a href="https://edition.cnn.com/2025/12/16/world/video/vertical-farming-future-tech-for-good-spc-digvid" target="_blank" rel="noopener noreferrer">Watch it on CNN</a>.</div>
+      </div>
+    </div>
+
+    <div class="media-card" style="margin-top: 20px;">
+      <div class="media-card-body">
+        <div class="media-outlet">IEEE Spectrum &middot; Video Friday</div>
+        <div class="media-title">Top robot videos — week of 4 October 2024</div>
+        <div class="media-desc">Featured in IEEE Spectrum's Video Friday roundup. <a href="https://spectrum.ieee.org/video-friday-quadruped-ladder-climbing" target="_blank" rel="noopener noreferrer">Read it on IEEE Spectrum</a>.</div>
+      </div>
+    </div>
+
+    <div class="media-row">
+      <div class="media-card media-card-small">
+        <img src="assets/img/srd.jpg" alt="Swiss Robotics Day Best Exhibitor award" />
+        <div class="media-card-body">
+          <div class="media-outlet">Swiss Robotics Day</div>
+          <div class="media-title">Best Exhibitor Award</div>
+          <div class="media-desc">Recognized with the Best Exhibitor award at Swiss Robotics Day for showcasing the CAFEs robotic system and its field-ready teleoperation capabilities.</div>
+        </div>
+      </div>
+
+      <div class="media-card media-card-small">
+        <img src="assets/img/wbcd.jpg" alt="WBCD first place award" />
+        <div class="media-card-body">
+          <div class="media-outlet">WBCD</div>
+          <div class="media-title">First Place</div>
+          <div class="media-desc">Awarded first place at WBCD, highlighting the strength of the team's robotic design, control, and deployment work.</div>
+        </div>
       </div>
     </div>
 
