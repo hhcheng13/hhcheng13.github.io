@@ -24,14 +24,69 @@
       overflow: hidden;
       text-decoration: none;
       display: block;
-      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
     .research-card:hover {
       border-color: var(--accent);
       transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+    .research-card.is-static {
+      cursor: default;
+      pointer-events: none;
+      opacity: 0.65;
+    }
+    .research-card.is-static .card-preview.is-placeholder {
+      pointer-events: none;
+    }
+    .research-card:not(a) {
+      cursor: default;
+    }
+    .research-card:not(a):hover {
+      border-color: var(--divider);
+      transform: none;
+      box-shadow: none;
+    }
+    .research-card:not(a):hover .card-preview img,
+    .research-card:not(a):hover .card-preview video {
+      transform: none;
+    }
+    .card-preview {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #0d1117;
+      border-bottom: 1px solid var(--divider);
+    }
+    .card-preview img,
+    .card-preview video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .card-preview.is-contain img,
+    .card-preview.is-contain video {
+      object-fit: contain;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .card-preview.is-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--card-bg) 0%, rgba(0, 0, 0, 0.25) 100%);
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 0.4px;
+    }
+    .research-card:hover .card-preview img,
+    .research-card:hover .card-preview video {
+      transform: scale(1.04);
     }
     .card-header {
-      padding: 28px 28px 24px;
+      padding: 22px 28px 20px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -78,6 +133,42 @@
       font-size: 12px;
       color: var(--text-muted);
       border-top: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .card-cta {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .card-cta i {
+      font-size: 10px;
+      margin-left: 4px;
+    }
+    .research-card:hover .card-cta {
+      transform: translateX(2px);
+    }
+    .page-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: -32px;
+      margin-bottom: 48px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .page-hint i {
+      color: var(--accent);
+      font-size: 13px;
     }
 
     .media-section {
@@ -149,13 +240,17 @@
 <div style="padding: 48px 80px; max-width: 1100px; margin: 0 auto;">
 
   <h1 class="section-heading" style="margin-bottom: 8px;">Research</h1>
-  <p style="color: var(--text-dim); font-size: 16px; margin-bottom: 48px; line-height: 1.7;">
+  <p style="color: var(--text-dim); font-size: 16px; margin-bottom: 16px; line-height: 1.7;">
     My research explores how robot bodies and intelligence can be designed together. My vision is a shared-autonomy framework where a single human supervisor can remotely oversee, switch between, and collaborate with multiple robots that can autonomously perform tasks beyond human reach. I co-design reconfigurable physical platforms with the models and learning frameworks needed to operate them, keeping a human in the loop as a structured part of the system.
   </p>
+  <p class="page-hint"><i class="fas fa-hand-pointer"></i> Select a topic below to view projects, publications, and media.</p>
 
   <div class="research-grid">
 
     <a class="research-card" href="research-cables.html">
+      <div class="card-preview">
+        <img src="assets/media/cu_brick_wood.gif" alt="Cable-driven parallel robot light painting demo" loading="lazy">
+      </div>
       <div class="card-header">
         <div class="card-header-left">
           <span class="card-tag">Reconfigurable Robots</span>
@@ -164,10 +259,18 @@
         </div>
         <i class="fas fa-arrow-right card-arrow"></i>
       </div>
-      <div class="card-pubs">T-RO 2023 · RA-L 2019 · MMT 2022 · CableCon 2025</div>
+      <div class="card-pubs">
+        <span>T-RO 2023 · RA-L 2019 · MMT 2022 · CableCon 2025</span>
+        <span class="card-cta">View details<i class="fas fa-arrow-right"></i></span>
+      </div>
     </a>
 
     <a class="research-card" href="research-teleop.html">
+      <div class="card-preview">
+        <video autoplay loop muted playsinline>
+          <source src="assets/media/Produce_0.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="card-header">
         <div class="card-header-left">
           <span class="card-tag">Teleoperation & HRI</span>
@@ -176,10 +279,18 @@
         </div>
         <i class="fas fa-arrow-right card-arrow"></i>
       </div>
-      <div class="card-pubs">npj Robotics 2025 · T-Mech 2025</div>
+      <div class="card-pubs">
+        <span>npj Robotics 2025 · T-Mech 2025</span>
+        <span class="card-cta">View details<i class="fas fa-arrow-right"></i></span>
+      </div>
     </a>
 
     <a class="research-card" href="research-learning.html">
+      <div class="card-preview">
+        <video autoplay loop muted playsinline>
+          <source src="assets/media/iros_online_correction_2.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="card-header">
         <div class="card-header-left">
           <span class="card-tag">Robot Learning</span>
@@ -188,33 +299,16 @@
         </div>
         <i class="fas fa-arrow-right card-arrow"></i>
       </div>
-      <div class="card-pubs">ICRA 2025 · IROS 2025 · T-ASE</div>
-    </a>
-
-    <a class="research-card" href="research-multibot.html">
-      <div class="card-header">
-        <div class="card-header-left">
-          <span class="card-tag">Multi-Robot Systems</span>
-          <div class="card-title">Multi-Robot Collaboration</div>
-          <div class="card-teaser">Coordinating multiple arms over shared workspaces with human-in-the-loop supervision.</div>
-        </div>
-        <i class="fas fa-arrow-right card-arrow"></i>
+      <div class="card-pubs">
+        <span>ICRA 2025 · IROS 2025 · T-ASE</span>
+        <span class="card-cta">View details<i class="fas fa-arrow-right"></i></span>
       </div>
-      <div class="card-pubs" style="font-style: italic; color: var(--text-muted);">Coming soon</div>
     </a>
-
-    <div class="research-card" style="cursor: default; pointer-events: none; opacity: 0.65;">
-      <div class="card-header">
-        <div class="card-header-left">
-          <span class="card-tag">Hyper-Redundant Robots</span>
-          <div class="card-title">Hyper-Redundant Robotic Arm <span style="font-size: 11px; font-weight: 600; background: var(--divider); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;">Coming Soon</span></div>
-          <div class="card-teaser">Research under review.</div>
-        </div>
-      </div>
-      <div class="card-pubs" style="font-style: italic;">Under review</div>
-    </div>
 
     <a class="research-card" href="research-soft.html">
+      <div class="card-preview">
+        <img src="assets/media/exoskeleton.png" alt="Soft lattice exoskeleton and mirrored compliant robot arm" loading="lazy">
+      </div>
       <div class="card-header">
         <div class="card-header-left">
           <span class="card-tag">Soft Robotics</span>
@@ -223,22 +317,42 @@
         </div>
         <i class="fas fa-arrow-right card-arrow"></i>
       </div>
-      <div class="card-pubs">Science Advances 2025 · ICRA 2025</div>
+      <div class="card-pubs">
+        <span>Science Advances 2025 · ICRA 2025</span>
+        <span class="card-cta">View details<i class="fas fa-arrow-right"></i></span>
+      </div>
     </a>
 
-    <div class="research-card" style="cursor: pointer;" onclick="toggleSurgical(this)">
+    <a class="research-card" href="research-multibot.html">
+      <div class="card-preview">
+        <video autoplay loop muted playsinline>
+          <source src="assets/media/cafe_on_cable.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="card-header">
         <div class="card-header-left">
-          <span class="card-tag">Surgical Robotics</span>
-          <div class="card-title">Open-Source Surgical & Endoscopic Robotics</div>
-          <div class="card-teaser">A future open-source platform for surgical and endoscopic robotics, in the spirit of the <a href="https://www.intuitive-foundation.org/dvrk/" target="_blank" rel="noopener noreferrer">da Vinci Research Kit (dVRK)</a>.</div>
+          <span class="card-tag">Multi-Robot Systems</span>
+          <div class="card-title">Multi-Robot Collaboration</div>
+          <div class="card-teaser">Coordinating multiple arms over shared workspaces with human-in-the-loop supervision.</div>
         </div>
-        <i class="fas fa-chevron-down card-arrow" style="transition: transform 0.3s;"></i>
+        <i class="fas fa-arrow-right card-arrow"></i>
       </div>
-      <div class="surgical-expand" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
-        <img src="assets/media/Cornerstone-Robotics-Sentire-endoscopic-robot-1.jpg" alt="Cornerstone Robotics Sentire endoscopic robot" style="width:100%; display:block;" />
+      <div class="card-pubs">
+        <span style="font-style: italic;">Coming soon</span>
+        <span class="card-cta">View details<i class="fas fa-arrow-right"></i></span>
       </div>
-      <div class="card-pubs">Cornerstone Robotics · Sentire Platform</div>
+    </a>
+
+    <div class="research-card is-static">
+      <div class="card-preview is-placeholder">Preview coming soon</div>
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="card-tag">Hyper-Redundant Robots</span>
+          <div class="card-title">Hyper-Redundant Robotic Arm <span style="font-size: 11px; font-weight: 600; background: var(--divider); color: var(--text-muted); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;">Coming Soon</span></div>
+          <div class="card-teaser">Research under review.</div>
+        </div>
+      </div>
+      <div class="card-pubs" style="font-style: italic;">Under review</div>
     </div>
 
   </div>
@@ -299,7 +413,23 @@
     </p>
 
     <div class="research-grid">
-      <div class="research-card" style="cursor: default; opacity: 0.65;">
+      <div class="research-card">
+        <div class="card-preview">
+          <img src="assets/media/Cornerstone-Robotics-Sentire-endoscopic-robot-1.jpg" alt="Cornerstone Robotics Sentire endoscopic robot" loading="lazy">
+        </div>
+        <div class="card-header">
+          <div class="card-header-left">
+            <span class="card-tag">Surgical Robotics</span>
+            <div class="card-title">Open-Source Surgical & Endoscopic Robotics</div>
+            <div class="card-teaser">A future open-source platform for surgical and endoscopic robotics, in the spirit of the <a href="https://www.intuitive-foundation.org/dvrk/" target="_blank" rel="noopener noreferrer">da Vinci Research Kit (dVRK)</a>.</div>
+          </div>
+        </div>
+        <div class="card-pubs">
+          <span>Cornerstone Robotics · Sentire Platform</span>
+        </div>
+      </div>
+
+      <div class="research-card is-static">
         <div class="card-header">
           <div class="card-header-left">
             <span class="card-tag">Open Source Robotics</span>
@@ -310,7 +440,7 @@
         <div class="card-pubs" style="font-style: italic;">CAD + code release in preparation</div>
       </div>
 
-      <div class="research-card" style="cursor: default; opacity: 0.65;">
+      <div class="research-card is-static">
         <div class="card-header">
           <div class="card-header-left">
             <span class="card-tag">Teleoperation Devices</span>
@@ -321,7 +451,7 @@
         <div class="card-pubs" style="font-style: italic;">Hardware + firmware release in preparation</div>
       </div>
 
-      <div class="research-card" style="cursor: default; opacity: 0.65;">
+      <div class="research-card is-static">
         <div class="card-header">
           <div class="card-header-left">
             <span class="card-tag">Simulation & Control</span>
@@ -332,7 +462,7 @@
         <div class="card-pubs" style="font-style: italic;">Built on <a href="https://github.com/darwinlau/CASPR" target="_blank" rel="noopener noreferrer">CASPR by Darwin Lau</a></div>
       </div>
 
-      <div class="research-card" style="cursor: default; opacity: 0.65;">
+      <div class="research-card is-static">
         <div class="card-header">
           <div class="card-header-left">
             <span class="card-tag">Field Robotics</span>
@@ -380,13 +510,6 @@
       html.setAttribute('data-theme', 'dark');
       icon.className = 'fas fa-moon';
     }
-  }
-  function toggleSurgical(card) {
-    const expand = card.querySelector('.surgical-expand');
-    const arrow = card.querySelector('.card-arrow');
-    const isOpen = expand.style.maxHeight && expand.style.maxHeight !== '0px';
-    expand.style.maxHeight = isOpen ? '0px' : expand.scrollHeight + 'px';
-    arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
   }
 </script>
 </body>
